@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import Header from "./Components/Header";
-import Home from "./Components/Home";
+import HeaderForAll from "./Components/HeaderForAll";
 import Menu from "./features/Menu";
 import Cart from "./features/Cart";
 import "./App.css";
@@ -13,14 +12,13 @@ function App() {
     <>
       <Provider store={store}>
         <BrowserRouter>
-          {/* <Home/> */}
           <Routes>
             <Route path="/" element={<AppLayout />} />
             <Route
               path="/menu"
               element={
                 <Menu>
-                  <Header />
+                  <HeaderForAll />
                 </Menu>
               }
             />
@@ -28,7 +26,7 @@ function App() {
               path="/cart"
               element={
                 <Cart>
-                  <Header />
+                  <HeaderForAll />
                 </Cart>
               }
             />
@@ -36,7 +34,7 @@ function App() {
               path="/orders"
               element={
                 <OrdersPage>
-                  <Header />
+                  <HeaderForAll />
                 </OrdersPage>
               }
             />

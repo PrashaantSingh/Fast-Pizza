@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 export default function Header() {
   return (
-    <div className="flex justify-between px-8 py-2 bg-orange-500 border-orange-500 border-b">
+    <div className="flex justify-between px-4 py-2  sm:px-8 sm:py-2 bg-orange-500 border-orange-500 border-b">
       <NavLink to="/" className="text-2xl text-white">
         Fast Pizza
       </NavLink>
@@ -12,7 +12,7 @@ export default function Header() {
             <TiShoppingCart className="text-2xl text-white" />
           </NavLink>
         </nav>
-        <div className="uppercase">Prashant</div>
+        <div className="uppercase hidden sm:block md:block lg:block">User</div>
       </div>
     </div>
   );
