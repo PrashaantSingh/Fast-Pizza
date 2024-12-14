@@ -8,13 +8,13 @@ export default function Menu({ children }) {
   const cart = useSelector((state) => state.cart);
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
 
-  useEffect(() => setOverlayIsVisible(cart.items.length > 0),[cart]);
+  useEffect(() => setOverlayIsVisible(cart.items.length > 0), [cart]);
   useEffect(() => {
     const fetchData = async () => {
       // const respone = await fetch(
       //   "https://react-fast-pizza-api.onrender.com/api/menu"
       // );
-      const respone = await fetch("/public/data.json");
+      const respone = await fetch("data.json");
       const result = await respone.json();
       setPizzaData(result.data);
     };
@@ -35,17 +35,12 @@ export default function Menu({ children }) {
           {!pizzaData
             ? "Loading..."
             : pizzaData.map((pizza) => (
-                <ItemCard
-                  key={pizza.id}
-                  pizza={pizza}
-                />
+                <ItemCard key={pizza.id} pizza={pizza} />
               ))}
         </div>
       </div>
 
-      {overlayIsVisible && (
-        <CartOverlay cart={cart} />
-      )}
+      {overlayIsVisible && <CartOverlay cart={cart} />}
     </>
   );
 }
