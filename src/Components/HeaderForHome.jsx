@@ -7,7 +7,7 @@ export default function HeaderForHome() {
   const user = useSelector(store => store.user);
   return (
     <div className="flex justify-between px-4 py-2  sm:px-8 sm:py-2 text-white">
-    <NavLink to="/" className="text-2xl text-semibold text-orange-500">
+    <NavLink to="/" className="text-2xl text-semibold text-orange-500 font-poppins font-semibold">
       Fast Pizza
     </NavLink>
     <div className="flex gap-8 items-center">

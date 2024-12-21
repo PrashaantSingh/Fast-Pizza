@@ -5,7 +5,7 @@ export default function Header() {
   const user=useSelector(store=>store.user)
   return (
     <div className="flex justify-between px-4 py-2  sm:px-8 sm:py-2 bg-orange-500 border-orange-500 border-b">
-      <NavLink to="/" className="text-2xl text-white">
+      <NavLink to="/" className="text-2xl text-white font-poppins font-semibold">
         Fast Pizza
       </NavLink>
       <div className="flex gap-8 items-center">
