@@ -16,7 +16,8 @@ export default function HeaderForHome() {
           <TiShoppingCart className="text-2xl text-white" />
         </NavLink>
       </nav>):""}
-        <div className="uppercase hidden sm:block">{user.name.split(" ")[0] || "Login"} </div>
+        <div className="uppercase hidden sm:block">{user.name.split(" ")[0]} </div>
+       {!user.name && <div>Login</div>}
     </div>
   </div>
   )
