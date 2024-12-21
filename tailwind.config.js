@@ -10,6 +10,9 @@ export const theme = {
     screens: {
       xs: "480px", 
     },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+    },
   },
 };
 export const plugins = [];

@@ -62,7 +62,7 @@ export default function OrdersPage({ children }) {
                     </p>
                   </div>
                   <div className="flex gap-10 justify-center items-center">
-                    <p>&#8377;{item.unitPrice * item.quantity}</p>
+                    <p>&#8377;{item.unitPrice * item.quantity*10}</p>
                   </div>
                 </div>
               ))}
