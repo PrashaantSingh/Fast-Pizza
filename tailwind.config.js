@@ -8,10 +8,10 @@ export const theme = {
       "footer-texture": "url('/img/footer-texture.png')",
     },
     screens: {
-      xs: "480px", 
+      xs: "480px",
     },
     fontFamily: {
-      poppins: ['Poppins', 'sans-serif'],
+      poppins: ["Poppins", "sans-serif"],
     },
   },
 };

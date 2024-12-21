@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  clearCart
-} from "../redux/reducers/slices/cartSlice";
+import { clearCart } from "../redux/reducers/slices/cartSlice";
 import CartItem from "../Components/CartItem";
 import EmptyCartMessage from "./EmptyCartMessage";
 
 export default function Cart({ children }) {
   const cart = useSelector((state) => state.cart);
-  const user = useSelector(state => state.user);
   const dispatch = useDispatch();
   function handleClearCart(dispatch) {
     dispatch(clearCart());
@@ -18,10 +15,13 @@ export default function Cart({ children }) {
       {children}
       <div className="mx-auto max-w-7xl">
         {cart.items.length === 0 ? (
-        <EmptyCartMessage/>
+          <EmptyCartMessage />
         ) : (
           <div>
-            <Link className="text-orange-500 underline mt-6 block ml-4" to="/menu">
+            <Link
+              className="text-orange-500 underline mt-6 block ml-4"
+              to="/menu"
+            >
               {" "}
               Back to menu &rarr;
             </Link>
@@ -38,8 +38,8 @@ export default function Cart({ children }) {
             </p>
             <div className="flex gap-4 text-white text-bold text-sm mx-auto max-w-max mt-10">
               <Link
-                to={`${user.phone && user.address ? "/orders" :"/user-details"}`}
-                  className="bg-orange-500 text-sm px-4 py-2  md:px-5 md:py-3 rounded-full"
+                to="/user-details"
+                className="bg-orange-500 text-sm px-4 py-2  md:px-5 md:py-3 rounded-full"
               >
                 Order Pizzas
               </Link>
@@ -56,6 +56,3 @@ export default function Cart({ children }) {
     </>
   );
 }
-
-
-

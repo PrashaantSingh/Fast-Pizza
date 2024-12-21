@@ -8,8 +8,22 @@ import OrdersPage from "./features/OrdersPage";
 import AppLayout from "./Components/AppLayout";
 import Login from "./Components/Login";
 import UserDetails from "./Components/UserDetails";
+import { useEffect, useState } from "react";
 function App() {
   const user = useSelector((state) => state.user.name);
+    const [pizzaData, setPizzaData] = useState([]);
+  
+  useEffect(() => {
+      const fetchData = async () => {
+        // const respone = await fetch(
+        //   "https://react-fast-pizza-api.onrender.com/api/menu"
+        // );
+        const respone = await fetch("data.json");
+        const result = await respone.json();
+        setPizzaData(result.data);
+      };
+      fetchData();
+    }, []);
 
   return (
     <>
@@ -17,13 +31,13 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={user ? <AppLayout /> : <Login />}
+            element={user ? <AppLayout pizzaData={pizzaData}/> : <Login />}
           />
           <Route path="/user-details" element={<UserDetails />} />
           <Route
             path="/menu"
             element={
-              <Menu>
+              <Menu pizzaData={pizzaData}>
                 <HeaderForAll />
               </Menu>
             }

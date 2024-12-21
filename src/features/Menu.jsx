@@ -3,23 +3,11 @@ import { useEffect, useState } from "react";
 import ItemCard from "../Components/ItemCard";
 import CartOverlay from "../Components/CartOverlay";
 
-export default function Menu({ children }) {
-  const [pizzaData, setPizzaData] = useState([]);
+export default function Menu({ pizzaData,children }) {
   const cart = useSelector((state) => state.cart);
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
 
   useEffect(() => setOverlayIsVisible(cart.items.length > 0), [cart]);
-  useEffect(() => {
-    const fetchData = async () => {
-      // const respone = await fetch(
-      //   "https://react-fast-pizza-api.onrender.com/api/menu"
-      // );
-      const respone = await fetch("data.json");
-      const result = await respone.json();
-      setPizzaData(result.data);
-    };
-    fetchData();
-  }, []);
   return (
     <>
       {children}

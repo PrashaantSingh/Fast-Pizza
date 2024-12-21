@@ -19,7 +19,7 @@ export default function OrdersPage({ children }) {
     <>
       {children}
       <div className="max-w-[90%] mx-auto mt-10">
-        {cart.items.length > 0 ? (
+        {cart.orderedItems.length > 0 ? (
           <div>
             <div className="max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] mx-auto">
               <Link onClick={(e)=>handleBackToMenu(e,dispatch,navigate)}
@@ -45,7 +45,7 @@ export default function OrdersPage({ children }) {
             </div>
 
             <div className=" max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] mx-auto">
-              {cart.items.map((item, index) => (
+              {cart.orderedItems.map((item, index) => (
                 <div
                   key={item.id || index}
                   className="max-w-7xl mx-auto flex justify-between items-center py-4  border-b first:border-t"
@@ -69,11 +69,11 @@ export default function OrdersPage({ children }) {
             </div>
             
             <div className="max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] mx-auto mb-4 mt-8 p-2.5 rounded-md bg-gray-100">
-              <p>Order Price: &#8377;{cart.totalPrice}</p>
-              <p>Platform Charge: &#8377;{Math.floor(cart.totalPrice * 0.03)}</p>
+              <p>Order Price: &#8377;{cart.totalOrderedPrice}</p>
+              <p>Platform Charge: &#8377;{Math.floor(cart.totalOrderedPrice * 0.03)}</p>
               <p className="font-semibold mt-2 text-lg">
                 Total price to pay: &#8377;
-                {Math.floor(cart.totalPrice + cart.totalPrice * 0.03)}
+                {Math.floor(cart.totalOrderedPrice + cart.totalOrderedPrice * 0.03)}
               </p>
             </div>
           </div>

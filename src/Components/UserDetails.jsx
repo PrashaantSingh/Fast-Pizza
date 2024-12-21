@@ -1,13 +1,20 @@
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Header from "./HeaderForAll";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-
+import { addToOrderItems, clearCart } from "../redux/reducers/slices/cartSlice";
+import {
+  setAddress,
+  setName,
+  setPhone,
+} from "../redux/reducers/slices/userSlice";
 export default function UserDetails() {
-  const user = useSelector(state => state.user);
-  const [nameInp, setNameInp] = useState(user.name)
-  const [phoneInp, setPhoneInp] = useState("")
-  const [addressInp,setAddressInp]=useState("")
+  const user = useSelector((state) => state.user);
+  const [nameInp, setNameInp] = useState(user.name);
+  const [phoneInp, setPhoneInp] = useState(user.phone);
+  const [addressInp, setAddressInp] = useState(user.address);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className="h-screen bg-orange-50 text-orange-950">
       <Header />
@@ -25,7 +32,7 @@ export default function UserDetails() {
               required
               placeholder="Enter your name"
               id="name"
-              onChange={e=>setNameInp(e.target.value)}
+              onChange={(e) => setNameInp(e.target.value)}
               value={nameInp}
             />
           </div>
@@ -39,7 +46,7 @@ export default function UserDetails() {
               required
               placeholder="Enter your phone"
               id="phone"
-              onChange={e => setPhoneInp(e.target.value)}
+              onChange={(e) => setPhoneInp(e.target.value)}
               value={phoneInp}
             />
           </div>
@@ -51,15 +58,27 @@ export default function UserDetails() {
               className="px-6 py-2 rounded-full text-orange-950 outline-none"
               type="text"
               placeholder="Enter your address"
-              id="address" required
-              onChange={e => setAddressInp(e.target.value)}
+              id="address"
+              required
+              onChange={(e) => setAddressInp(e.target.value)}
               value={addressInp}
             />
           </div>
           <div className="flex justify-center items-center">
-            <Link className="bg-orange-500 text-white rounded-full px-5 py-2 mt-2" to="/orders">
+            <button
+              className="bg-orange-500 text-white rounded-full px-5 py-2 mt-2"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(addToOrderItems());
+                dispatch(clearCart());
+                dispatch(setName(nameInp));
+                dispatch(setPhone(phoneInp));
+                dispatch(setAddress(addressInp));
+                navigate("/orders");
+              }}
+            >
               Confirm Order
-            </Link>
+            </button>
           </div>
         </form>
       </div>
