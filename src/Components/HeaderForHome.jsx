@@ -8,7 +8,7 @@ export default function HeaderForHome() {
   return (
     <div className="flex justify-between px-4 py-2  sm:px-8 sm:py-2 text-white">
     <NavLink to="/" className="text-2xl text-semibold text-orange-500 font-poppins font-semibold">
-      Fast Pizza
+      SliceCart
     </NavLink>
     <div className="flex gap-8 items-center">
       {user.name!=="" ?(<nav className="flex gap-8">
