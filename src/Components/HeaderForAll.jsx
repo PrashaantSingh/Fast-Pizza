@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div className="flex justify-between px-4 py-2  sm:px-8 sm:py-2 bg-orange-500 border-orange-500 border-b">
       <NavLink to="/" className="text-2xl text-white font-poppins font-semibold">
-        Fast Pizza
+      SliceCart
       </NavLink>
       <div className="flex gap-8 items-center">
         <nav className="flex gap-8">
